@@ -1,20 +1,24 @@
 {
     "name": "Node Calculator",
-    "extensions": [
-        "coenraads.bracket-pair-colorizer-2",
-        "eamodio.gitlens",
-        "github.vscode-pull-request-github",
-        "ms-azuretools.vscode-docker",
-        "ms-vsliveshare.vsliveshare",
-        "vscode-icons-team.vscode-icons",
-        "visualstudioexptteam.vscodeintellicode"
-    ],
     "dockerFile": "Dockerfile",
+
+    // Use 'settings' to set *default* container specific settings.json values on container create. 
     "settings": {
-        "terminal.integrated.shell.linux": "/usr/bin/zsh",
-        "files.exclude": {
-            "**/CODE_OF_CONDUCT.md": true,
-            "**/LICENSE": true
-        }
-    }
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+
+    // Add the IDs of extensions you want installed when the container is created in the array below.
+    "extensions": [
+        "dbaeumer.vscode-eslint"
+    ],
+    
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+    "forwardPorts": [3000],
+
+    // Specifies a command that should be run after the container has been created.
+    "postCreateCommand": "yarn install",
+        
+    // Comment out the next line to run as root instead.
+    "remoteUser": "node"
+
 }
